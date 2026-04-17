@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My BABY ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #0f0f0f;
+    color: #f5f5f5;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* 🌌 Stars */
+.stars {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/stardust.png');
+    animation: moveStars 60s linear infinite;
+    z-index: -2;
+}
+
+@keyframes moveStars {
+    from { background-position: 0 0; }
+    to { background-position: 1000px 1000px; }
+}
+
+/* 🌑 Overlay */
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: -1;
+}
+
+/* 💖 Hearts */
+.heart {
+    position: fixed;
+    color: rgba(255, 105, 135, 0.7);
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    from { transform: translateY(100vh); }
+    to { transform: translateY(-10vh); }
+}
+
+/* ✨ Glow */
+.glow {
+    font-size: 3.5em;
+    color: #ff4d6d;
+    text-shadow: 0 0 20px #ff4d6d;
+}
+
+/* Layout */
+#main { display: none; padding: 20px; }
+
+.card {
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 20px;
+    max-width: 600px;
+}
+
+/* Buttons */
+button {
+    padding: 12px 22px;
+    border-radius: 25px;
+    border: none;
+    background: linear-gradient(135deg, #ff4d6d, #ff758f);
+    color: white;
+    cursor: pointer;
+    margin: 10px;
+}
+
+/* Story images */
+#story img {
+    width: 100%;
+    border-radius: 12px;
+    margin-top: 10px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.6s;
+}
+
+#story.show img {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Ring */
+.ring {
+    font-size: 60px;
+    animation: pop 1s ease;
+}
+
+@keyframes pop {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+
+/* Confetti */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    top: 0;
+    animation: fall 3s linear infinite;
+}
+
+@keyframes fall {
+    to { transform: translateY(100vh) rotate(720deg); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+<div class="overlay"></div>
+
+<!-- 🎵 MUSIC -->
+<audio id="bgmusic" loop>
+    <source src="your-music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 💖 HEARTS -->
+<script>
+for(let i=0;i<30;i++){
+    let h=document.createElement("div");
+    h.innerHTML="💖";
+    h.className="heart";
+    h.style.left=Math.random()*100+"%";
+    h.style.fontSize=(Math.random()*20+10)+"px";
+    h.style.animationDuration=(Math.random()*3+3)+"s";
+    document.body.appendChild(h);
+}
+</script>
+
+<!-- INTRO -->
+<div id="intro">
+    <h1>Hey BABY ❤️</h1>
+    <button onclick="start()">Open 💌</button>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+
+    <h1 class="glow">Shruthika 💖</h1>
+
+    <!-- 🎬 TYPEWRITER -->
+    <div class="card">
+        <div id="typewriter"></div>
+    </div>
+
+    <!-- 📸 STORY BUTTON -->
+    <button onclick="showStory()">See Our Story 📸</button>
+
+    <!-- STORY -->
+    <div id="story" class="card">
+        <p>💫 Our Story</p>
+        <img src="story1.jpg">
+        <img src="story2.jpg">
+        <img src="story3.jpg">
+        <img src="story4.jpg">
+    </div>
+
+    <!-- FINAL BUTTON -->
+    <button onclick="final()">One Last Thing 💖</button>
+
+    <!-- 💌 FINAL MESSAGE -->
+    <div id="final" class="card" style="display:none;">
+        
+        <p>
+            BABY, I want to tell you something from my heart. Not just cause its your birthday, but for everything that’s ahead of us.
+        </p>
+
+        <p>
+            I’m not here for a short time, and I’m not here for temporary moments. I’m here to stay. No matter what life brings, no matter how things change, I won’t walk away from you. I will stand by you, support you, and choose you every single time.
+        </p>
+
+        <p>
+            You are not just someone I love. You are the most important person in my life. Your happiness means everything to me. Your smile, your feelings, your presence. All of it matters more to me than I can ever explain in words.
+        </p>
+
+        <p>
+            I don’t just love you for the good moments. I love you completely. Your heart, your imperfections, your strength, your softness. Everything that makes you YOU.
+        </p>
+
+        <p>
+            And I promise you this, with all my heart. I will be with you, not just today or tomorrow, but for a lifetime. I will always choose you, again and again, no matter what.
+        </p>
+
+        <h2>Will you be with me forever? 💖</h2>
+
+        <button onclick="yesClicked()">YES 💍</button>
+
+    </div>
+
+</div>
+
+<script>
+function start(){
+    document.getElementById("intro").style.display="none";
+    document.getElementById("main").style.display="block";
+
+    let music = document.getElementById("bgmusic");
+    music.currentTime = 175; // change timing here
+    music.play();
+
+    cinematic();
+}
+
+/* 🎬 TYPEWRITER */
+let lines = [
+"Happy Birthday BABY ❤️",
+"",
+"Today is all about you",
+"and I just want you to know how much special you are to me",
+"",
+"The way you smile...",
+"the way you look at me...",
+"the way your face shines without even trying...",
+"",
+"You are honestly the most beautiful person I’ve ever seen.",
+"Not just by looks...",
+"but by your heart, your nature, your body and basically everything.",
+"",
+"Everything about you melts me",
+"",
+"You are my peace",
+"You are my happiness",
+"You are my world",
+"",
+"And I LOVE YOU ❤️"
+];
+
+let l=0,c=0;
+
+function cinematic(){
+    if(l<lines.length){
+        if(c<lines[l].length){
+            document.getElementById("typewriter").innerHTML += lines[l][c];
+            c++;
+            setTimeout(cinematic,10);
+        } else {
+            document.getElementById("typewriter").innerHTML += "<br>";
+            l++; c=0;
+            setTimeout(cinematic,600);
+        }
+    }
+}
+
+/* STORY */
+function showStory(){
+    document.getElementById("story").classList.add("show");
+}
+
+/* FINAL */
+function final(){
+    document.getElementById("final").style.display="block";
+}
+
+/* 🎉 CONFETTI */
+function yesClicked(){
+    document.getElementById("final").innerHTML += "<div class='ring'>💍</div>";
+
+    for(let i=0;i<120;i++){
+        let c=document.createElement("div");
+        c.className="confetti";
+        c.style.left=Math.random()*100+"%";
+        c.style.background=`hsl(${Math.random()*360},100%,50%)`;
+        document.body.appendChild(c);
+    }
+}
+</script>
+
+</body>
+</html>
